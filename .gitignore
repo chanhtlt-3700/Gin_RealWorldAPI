@@ -1,0 +1,15 @@
+# Env & secrets
+.env
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Build output
+/bin/
+*.exe
+
+# IDE
+.idea/
+.vscode/

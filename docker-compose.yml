@@ -1,0 +1,22 @@
+# PostgreSQL cho môi trường local. Chạy: docker compose up -d
+# Sau đó đặt DB_DRIVER=postgres trong file .env
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: conduit-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: conduit
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d conduit"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
